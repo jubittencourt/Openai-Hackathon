@@ -51,7 +51,7 @@ export function Veredito({ briefing, versoes, comparacoes, objetivo, limitacoes,
     <section aria-labelledby="veredito-heading" className="rounded-3xl border border-indigo-400/30 bg-indigo-950/35 p-5 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-300">Juiz do duelo</p><h2 id="veredito-heading" className="mt-1 text-2xl font-bold text-white">Veredito</h2></div>
-        {resposta?.fonte === "exemplo" && <span className="rounded-full border border-slate-500 px-3 py-1 text-xs text-slate-300">Veredito de exemplo</span>}
+        {resposta?.fonte === "exemplo" && <span className="rounded-full border border-slate-500 px-3 py-1 text-xs text-slate-300">Fonte: exemplo</span>}
       </div>
       {analisando && <p role="status" className="mt-5 animate-pulse text-indigo-100">O juiz está analisando…</p>}
       {erro && <p className="mt-3 text-xs text-slate-400">{erro}</p>}

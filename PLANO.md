@@ -99,8 +99,8 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 | **M1** | **Mínimo aceitável ponta a ponta no link público, aprovado pelo QA** | todos | T00–T09 | — | RF01–RF10 | **14h10** | a fazer |
 | T11 | Hero + mockup de post Instagram + "VS" + balão da hipótese | Julia | M1 | `components/briefing/Hero.tsx`, `components/versoes/**` | RF12, RF17 | 14h40 | a fazer |
 | T12 | Visual global: tema escuro, cores A/B, coroa no vencedor, responsivo 375 px, foco visível | Brenno | M1 | `globals.css` (tema via `@theme`), `components/comum/**` | RF15, RNF02, RNF03 | 14h40 | a fazer |
-| T13 | `Exportar` (.md) | Brenno | M1 | `components/veredito/Exportar.tsx` | RF13 | 14h40 | a fazer |
-| T14 | `ComoFunciona` no rodapé + aviso de `fonte: "exemplo"` | Brenno | M1 | `components/comum/ComoFunciona.tsx` | RF14, RF16 | 14h40 | a fazer |
+| T13 | `Exportar` (.md) | Brenno | M1 | `components/veredito/Exportar.tsx` | RF13 | 14h40 | pronto |
+| T14 | `ComoFunciona` no rodapé + aviso de `fonte: "exemplo"` | Brenno | M1 | `components/comum/ComoFunciona.tsx` | RF14, RF16 | 14h40 | pronto |
 | **F** | **Congelar funcionalidades** | Claudio | — | — | — | **14h45** | a fazer |
 | T15 | Roteiro de aceite REQUISITOS §7 em produção (anônima + 375 px) | Andrey | F | `QA.md` | RF01–RF17 | 15h10 | a fazer |
 | T16 | `STATUS.md` a cada rodada de QA; README (o que é, link, como rodar, quem fez); `docs/roteiro-video.md` | Felipe | contínuo | `STATUS.md`, `README.md`, `docs/**` | entrega | 15h10 | a fazer |
