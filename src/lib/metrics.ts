@@ -70,7 +70,7 @@ export function limitacoes(a: Resultado, b: Resultado, comps: Comparacao[]): str
     if (comp.selo === "Empate técnico") {
       itens.push(`Empate técnico em ${NOMES_INDICADOR[comp.indicador]}: a diferença pode ser acaso.`);
     }
-    if (comp.selo === "Não testável" && (comp.valorA === null || comp.valorB === null || comp.z === null)) {
+    if (comp.selo === "Não testável" && (comp.valorA === null || comp.valorB === null)) {
       itens.push(`Sem dados para calcular ${NOMES_INDICADOR[comp.indicador]}: divisão por zero.`);
     }
   }
