@@ -19,19 +19,21 @@ function criarComparacao(
   maiorMelhor: boolean,
   testavel = true,
 ): Comparacao {
+  const indicadorCalculavel = valorA !== null && valorB !== null;
+  const zFinal = indicadorCalculavel ? z : null;
   const vencedor = valorA === null || valorB === null || valorA === valorB
     ? null
     : (maiorMelhor ? valorA > valorB : valorA < valorB) ? "A" : "B";
-  const selo: Comparacao["selo"] = !testavel || z === null
+  const selo: Comparacao["selo"] = !testavel || !indicadorCalculavel || zFinal === null
     ? "Não testável"
-    : z >= LIMIAR_Z ? "Vitória confiável" : "Empate técnico";
+    : zFinal >= LIMIAR_Z ? "Vitória confiável" : "Empate técnico";
 
   return {
     indicador,
     valorA,
     valorB,
     vencedor,
-    z,
+    z: zFinal,
     selo,
     formula: indicador === "ctr"
       ? "cliques / impressoes"
