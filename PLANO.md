@@ -103,7 +103,7 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 | T14 | `ComoFunciona` no rodapé + aviso de `fonte: "exemplo"` | Brenno | M1 | `components/comum/ComoFunciona.tsx` | RF14, RF16 | 14h40 | pronto |
 | **F** | **Congelar funcionalidades** | Claudio | — | — | — | **14h45** | a fazer |
 | T15 | Roteiro de aceite REQUISITOS §7 em produção (anônima + 375 px) | Andrey | F | `QA.md` | RF01–RF17 | 15h10 | a fazer |
-| T16 | `STATUS.md` a cada rodada de QA; README (o que é, link, como rodar, quem fez); `docs/roteiro-video.md` | Felipe | contínuo | `STATUS.md`, `README.md`, `docs/**` | entrega | 15h10 | a fazer |
+| T16 | `STATUS.md` a cada rodada de QA; README (o que é, link, como rodar, quem fez); `docs/roteiro-video.md` | Felipe | contínuo | `STATUS.md`, `README.md`, `docs/**` | entrega | 15h10 | pronto: T16 |
 | T17 | Correções finais decididas pelo Claudio | Julia/Brenno | T15 | os próprios | bugs bloqueantes | 15h20 | a fazer |
 | T18 | Gravar vídeo (≤ 3 min, só botões de exemplo) | humano + Felipe | T17 | — | entrega | 15h40 | a fazer |
 | T19 | Checklist de entrega + formulário enviado | Felipe + Claudio | T18 | — | entrega | **15h55** | a fazer |
