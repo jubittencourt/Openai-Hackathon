@@ -93,9 +93,9 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 | T05 | Etapa 2 `Versoes`: 2 cards editáveis, cadastro manual | Julia | T04 | `components/versoes/**` | RF02 | 13h30 | a fazer |
 | T06 | `POST /api/versoes` com Responses API + fallback 15 s; botão "Gerar com IA" com carregamento | Julia | T01 | `app/api/versoes/**`, `components/versoes/**` | RF02, RF08 | 13h45 | a fazer |
 | T07 | Etapa 3 `Resultados`: tabela 2 linhas, "Carregar exemplo", colar CSV via `parseCsv` com erro legível | Julia | T02 | `components/resultados/**` | RF03 | 13h45 | a fazer |
-| T08 | `Placar` + `SeletorObjetivo` + `Selo` (valores, fórmula, z, vencedor com texto) + `format.ts` | Brenno | T02 | `components/placar/**`, `components/comum/format.ts` | RF04, RF05, RF06 | 13h40 | a fazer |
-| T09 | `Limitacoes` (card de alerta) | Brenno | T02 | `components/veredito/Limitacoes.tsx` | RF07 | 13h45 | a fazer |
-| T10 | `POST /api/veredito` + `Veredito` com fallback e "o juiz está analisando…" | Brenno | T01 | `app/api/veredito/**`, `components/veredito/**` | RF11, RF08 | 14h05 | a fazer |
+| T08 | `Placar` + `SeletorObjetivo` + `Selo` (valores, fórmula, z, vencedor com texto) + `format.ts` | Brenno | T02 | `components/placar/**`, `components/comum/format.ts` | RF04, RF05, RF06 | 13h40 | pronto |
+| T09 | `Limitacoes` (card de alerta) | Brenno | T02 | `components/veredito/Limitacoes.tsx` | RF07 | 13h45 | pronto |
+| T10 | `POST /api/veredito` + `Veredito` com fallback e "o juiz está analisando…" | Brenno | T01 | `app/api/veredito/**`, `components/veredito/**` | RF11, RF08 | 14h05 | pronto |
 | **M1** | **Mínimo aceitável ponta a ponta no link público, aprovado pelo QA** | todos | T00–T09 | — | RF01–RF10 | **14h10** | a fazer |
 | T11 | Hero + mockup de post Instagram + "VS" + balão da hipótese | Julia | M1 | `components/briefing/Hero.tsx`, `components/versoes/**` | RF12, RF17 | 14h40 | a fazer |
 | T12 | Visual global: tema escuro, cores A/B, coroa no vencedor, responsivo 375 px, foco visível | Brenno | M1 | `globals.css` (tema via `@theme`), `components/comum/**` | RF15, RNF02, RNF03 | 14h40 | a fazer |
