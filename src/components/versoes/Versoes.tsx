@@ -43,7 +43,7 @@ export function Versoes({ briefing, value, onChange }: { briefing: Briefing; val
   }
 
   return (
-    <section id="etapa-versoes" aria-labelledby="versoes-heading" className="space-y-5 rounded-3xl border border-slate-700 bg-slate-900/80 p-5 sm:p-8">
+    <section id="etapa-versoes" aria-labelledby="versoes-heading" className="min-w-0 space-y-5 rounded-3xl border border-slate-700 bg-slate-900/80 p-4 sm:p-8">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Etapa 2</p>
@@ -57,9 +57,13 @@ export function Versoes({ briefing, value, onChange }: { briefing: Briefing; val
           </button>
         </div>
       </div>
-      <div className="grid items-start gap-6 lg:grid-cols-[1fr_auto_1fr]">
+      <div className="grid min-w-0 items-start gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         <PostMockup versao={versoes[0]} onEdit={(c, t) => editar(0, c, t)} />
-        <div aria-hidden="true" className="self-center text-center text-3xl font-black text-slate-500">VS</div>
+        <div aria-hidden="true" className="flex items-center justify-center gap-3 py-1 lg:flex-col lg:py-4">
+          <span className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-300/50 lg:h-10 lg:w-px lg:flex-none lg:bg-gradient-to-b" />
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 bg-slate-950 text-sm font-black italic tracking-widest text-white shadow-lg shadow-black/30 ring-4 ring-slate-950/70">VS</span>
+          <span className="h-px flex-1 bg-gradient-to-l from-transparent to-orange-300/50 lg:h-10 lg:w-px lg:flex-none lg:bg-gradient-to-b" />
+        </div>
         <PostMockup versao={versoes[1]} onEdit={(c, t) => editar(1, c, t)} />
       </div>
     </section>
