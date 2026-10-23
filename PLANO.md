@@ -143,3 +143,4 @@ Cortar nesta ordem, sem perguntar de novo, quando o marco anterior atrasar mais 
 | 13h05 | Sessões Codex de Julia, Andrey e Felipe caíram (token expirado). Brenno liberado para T13/T14 antes do M1 para não ficar parado; T12 continua depois do M1. |
 | 13h05 | `maestri` não roda dentro dos agentes Codex: retorno por `maestri check` do Claudio. |
 | 13h40 | Agentes Codex (Julia, Andrey, Felipe) sem conseguir executar comandos (Windows erro 1909/1326 no sandbox). Claudio assumiu T04–T07 para garantir o M1; Julia fica com T11 quando voltar. |
+| 14h45 | `OPENAI_API_KEY` na Vercel; IA ativa em produção (versões ~11 s, veredito 8–12 s, abaixo do fallback de 15 s). Projeto Vercel duplicado `hackathon-23-10` apagado. **Funcionalidades congeladas.** |
