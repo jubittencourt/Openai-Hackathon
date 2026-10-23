@@ -139,3 +139,6 @@ Cortar nesta ordem, sem perguntar de novo, quando o marco anterior atrasar mais 
 | 12h20 | `Comparacao.z` em valor absoluto; "Poucos contatos ({n})" usa o menor número de contatos. |
 | 12h40 | Next.js 15.5 + Tailwind v4 + vitest 5 + openai 7. Sem `tailwind.config.ts` (tema em `globals.css`). |
 | 12h55 | Repo: https://github.com/jubittencourt/Openai-Hackathon (branch `main`). Produção: https://duelo-de-campanhas.vercel.app |
+| 13h05 | Claudio conferiu `metrics.ts` (T02) contra REQUISITOS §5: valores, z, selos e limitações corretos. Aguarda o teste formal do Andrey (T03). |
+| 13h05 | Sessões Codex de Julia, Andrey e Felipe caíram (token expirado). Brenno liberado para T13/T14 antes do M1 para não ficar parado; T12 continua depois do M1. |
+| 13h05 | `maestri` não roda dentro dos agentes Codex: retorno por `maestri check` do Claudio. |
