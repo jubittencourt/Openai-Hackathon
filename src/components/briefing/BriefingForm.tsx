@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { briefingExemplo } from "@/data/exemplo";
+import { cenarios } from "@/data/exemplo";
 import type { Briefing } from "@/lib/types";
 
 const vazio: Briefing = { produto: "", publico: "", objetivo: "", verba: 0, canal: "Instagram feed" };
@@ -28,9 +28,9 @@ export function BriefingForm({ value, onChange }: { value: Briefing | null; onCh
     onChange(b);
   }
 
-  function usarExemplo() {
-    setRascunho(briefingExemplo);
-    confirmar(briefingExemplo);
+  function usarExemplo(b: Briefing) {
+    setRascunho(b);
+    confirmar(b);
   }
 
   return (
@@ -40,9 +40,24 @@ export function BriefingForm({ value, onChange }: { value: Briefing | null; onCh
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Etapa 1</p>
           <h2 id="briefing-heading" className="mt-1 text-2xl font-bold text-white">Briefing</h2>
         </div>
-        <button type="button" onClick={usarExemplo} className="rounded-full border border-cyan-300/60 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300">
-          Usar exemplo
-        </button>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-3" role="group" aria-label="Briefings de exemplo">
+        {cenarios.map((c) => {
+          const ativo = value?.produto === c.briefing.produto;
+          return (
+            <button
+              key={c.numero}
+              type="button"
+              onClick={() => usarExemplo(c.briefing)}
+              aria-pressed={ativo}
+              className={`rounded-2xl border p-3 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300 ${ativo ? "border-cyan-300 bg-cyan-950/60" : "border-slate-700 bg-slate-950/50 hover:border-cyan-300/60"}`}
+            >
+              <span className="text-xs font-bold uppercase tracking-[0.15em] text-cyan-300">Exemplo {c.numero}</span>
+              <span className="mt-1 block font-bold text-white">{c.nome}</span>
+              <span className="mt-1 block text-xs leading-snug text-slate-400">{c.resumo}</span>
+            </button>
+          );
+        })}
       </div>
       <form
         className="grid gap-4 sm:grid-cols-2"

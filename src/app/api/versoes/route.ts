@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { versoesExemplo } from "@/data/exemplo";
+import { versoesParaBriefing } from "@/data/exemplo";
 import type { Briefing, Versao, VersoesResposta } from "@/lib/types";
 
 const versaoSchema = {
@@ -23,7 +23,7 @@ const schema = {
 
 type Gerado = Record<"A" | "B", Omit<Versao, "id">>;
 
-const fallback: VersoesResposta = { versoes: versoesExemplo, fonte: "exemplo" };
+const fallback = (briefing?: Briefing): VersoesResposta => ({ versoes: versoesParaBriefing(briefing), fonte: "exemplo" });
 
 function valida(v: unknown): v is Omit<Versao, "id"> {
   const o = v as Record<string, unknown> | null;
@@ -31,9 +31,10 @@ function valida(v: unknown): v is Omit<Versao, "id"> {
 }
 
 export async function POST(request: Request) {
+  let briefing: Briefing | undefined;
   try {
-    const { briefing } = (await request.json()) as { briefing?: Briefing };
-    if (!briefing?.produto || !process.env.OPENAI_API_KEY) return Response.json(fallback);
+    ({ briefing } = (await request.json()) as { briefing?: Briefing });
+    if (!briefing?.produto || !process.env.OPENAI_API_KEY) return Response.json(fallback(briefing));
 
     const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const controller = new AbortController();
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
         { signal: controller.signal },
       );
       const gerado = JSON.parse(resposta.output_text) as Gerado;
-      if (!valida(gerado.A) || !valida(gerado.B)) return Response.json(fallback);
+      if (!valida(gerado.A) || !valida(gerado.B)) return Response.json(fallback(briefing));
       const versoes: [Versao, Versao] = [
         { id: "A", ...gerado.A },
         { id: "B", ...gerado.B },
@@ -65,6 +66,6 @@ export async function POST(request: Request) {
       clearTimeout(timeout);
     }
   } catch {
-    return Response.json(fallback);
+    return Response.json(fallback(briefing));
   }
 }

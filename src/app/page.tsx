@@ -39,9 +39,15 @@ export default function Home() {
         <BriefingForm
           value={briefing}
           onChange={(b) => {
-            const primeiro = !briefing;
+            const trocouProduto = briefing?.produto !== b.produto;
             setBriefing(b);
-            if (primeiro) rolarPara("etapa-versoes");
+            if (trocouProduto) {
+              // Outro produto: versões e resultados antigos não valem mais.
+              setVersoes(null);
+              setResultados(null);
+              setVeredito(null);
+              rolarPara("etapa-versoes");
+            }
           }}
         />
 

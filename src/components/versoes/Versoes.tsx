@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Briefing, Fonte, Versao, VersoesResposta } from "@/lib/types";
-import { versoesExemplo } from "@/data/exemplo";
+import { versoesParaBriefing } from "@/data/exemplo";
 import { PostMockup } from "@/components/versoes/PostMockup";
 
 const vazias: [Versao, Versao] = [
@@ -29,7 +29,7 @@ export function Versoes({ briefing, value, onChange }: { briefing: Briefing; val
       onChange(dados.versoes);
       setFonte(dados.fonte);
     } catch {
-      onChange(versoesExemplo);
+      onChange(versoesParaBriefing(briefing));
       setFonte("exemplo");
     } finally {
       setGerando(false);

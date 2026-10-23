@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import type { Resultado } from "@/lib/types";
-import { csvExemplo, resultadosExemplo } from "@/data/exemplo";
+import { cenarios, csvExemplo } from "@/data/exemplo";
+import { arquivosCsv } from "@/data/csvs";
 import { parseCsv } from "@/lib/metrics";
 
 type Campo = keyof Omit<Resultado, "id">;
@@ -37,12 +38,23 @@ export function Resultados({ value, onChange }: { value: [Resultado, Resultado] 
     aplicar(novo);
   }
 
-  function importarCsv() {
+  function importarCsv(texto = csv) {
     try {
-      aplicar(parseCsv(csv));
+      aplicar(parseCsv(texto));
     } catch (e) {
       setErro(e instanceof Error ? e.message : "CSV inválido.");
     }
+  }
+
+  async function enviarArquivo(arquivo: File | undefined) {
+    if (!arquivo) return;
+    const texto = await arquivo.text();
+    setCsv(texto);
+    importarCsv(texto);
+  }
+
+  function paraCsv(r: [Resultado, Resultado]) {
+    return ["versao,impressoes,cliques,contatos,investimento", ...r.map((l) => [l.id, l.impressoes, l.cliques, l.contatos, l.investimento].join(","))].join("\n");
   }
 
   return (
@@ -52,16 +64,22 @@ export function Resultados({ value, onChange }: { value: [Resultado, Resultado] 
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Etapa 3</p>
           <h2 id="resultados-heading" className="mt-1 text-2xl font-bold text-white">Resultados fictícios</h2>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            setCsv(csvExemplo);
-            aplicar(resultadosExemplo);
-          }}
-          className="rounded-full border border-cyan-300/60 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
-        >
-          Carregar exemplo
-        </button>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Resultados de exemplo">
+          {cenarios.map((c) => (
+            <button
+              key={c.numero}
+              type="button"
+              title={`${c.nome}: ${c.resumo}`}
+              onClick={() => {
+                setCsv(paraCsv(c.resultados));
+                aplicar(c.resultados);
+              }}
+              className="rounded-full border border-cyan-300/60 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
+            >
+              Exemplo {c.numero}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="overflow-x-auto">
@@ -107,11 +125,30 @@ export function Resultados({ value, onChange }: { value: [Resultado, Resultado] 
             className="mt-1 w-full rounded-xl border border-slate-700 bg-slate-950/70 px-3 py-2 font-mono text-xs text-white placeholder:text-slate-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
           />
         </label>
-        <button type="button" onClick={importarCsv} className="rounded-full bg-slate-200 px-4 py-2 text-sm font-bold text-slate-950 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">
+        <div className="flex flex-wrap items-center gap-3">
+        <button type="button" onClick={() => importarCsv()} className="rounded-full bg-slate-200 px-4 py-2 text-sm font-bold text-slate-950 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">
           Importar CSV
         </button>
+          <label className="cursor-pointer rounded-full border border-slate-500 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-800 focus-within:outline focus-within:outline-2 focus-within:outline-cyan-300">
+            Enviar arquivo .csv
+            <input type="file" accept=".csv,text/csv" className="sr-only" onChange={(e) => { enviarArquivo(e.target.files?.[0]); e.target.value = ""; }} />
+          </label>
+        </div>
         {erro && <p role="alert" className="text-sm text-red-300">{erro}</p>}
       </div>
+
+      <details className="rounded-2xl border border-slate-700 bg-slate-950/40 p-4 text-sm text-slate-300">
+        <summary className="cursor-pointer font-semibold text-white">📂 CSVs de exemplo para baixar e testar ({arquivosCsv.length} arquivos)</summary>
+        <p className="mt-2 text-xs text-slate-400">Dados fictícios. Baixe um arquivo e use “Enviar arquivo .csv”. Formato: <code>versao,impressoes,cliques,contatos,investimento</code>.</p>
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+          {arquivosCsv.map((a) => (
+            <li key={a.arquivo} className="rounded-xl border border-slate-800 p-3">
+              <a href={`/exemplos/${a.arquivo}`} download className="font-semibold text-cyan-300 underline-offset-2 hover:underline">{a.titulo}</a>
+              <p className="mt-1 text-xs text-slate-400">{a.descricao}</p>
+            </li>
+          ))}
+        </ul>
+      </details>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { vereditosExemplo } from "@/data/exemplo";
+import { vereditoFallback } from "@/lib/vereditoFallback";
 import type { Briefing, Comparacao, IndicadorId, Versao, Veredito as VereditoType, VereditoResposta } from "@/lib/types";
 
 type Props = {
@@ -38,7 +38,7 @@ export function Veredito({ briefing, versoes, comparacoes, objetivo, limitacoes,
       onVeredito?.(resultado.veredito);
     }).catch(() => {
       if (!ativo) return;
-      const fallback: VereditoResposta = { veredito: vereditosExemplo[objetivo], fonte: "exemplo" };
+      const fallback: VereditoResposta = { veredito: vereditoFallback(versoes, comparacoes, objetivo), fonte: "exemplo" };
       setResposta(fallback);
       onVeredito?.(fallback.veredito);
       setErro("Usando o veredito de exemplo.");
