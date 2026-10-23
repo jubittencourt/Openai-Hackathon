@@ -89,10 +89,10 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 | T01 | `types.ts` (§5.1) e `exemplo.ts` (briefing, versões, resultados, CSV, veredito por objetivo) | Claudio | T00 | `src/lib/types.ts`, `src/data/exemplo.ts` | contratos | 12h45 | pronto: T01 |
 | T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | pronto |
 | T03 | `metrics.test.ts` com a tabela §5 do REQUISITOS + zero contatos + investimentos diferentes + CSV inválido | Andrey | T01 (escreve já), roda após T02 | `src/lib/metrics.test.ts` | RF04, RF06, RF07 | 13h20 | a fazer |
-| T04 | `page.tsx` com estado (§1.2) e Etapa 1 `BriefingForm` + "Usar exemplo" | Julia | T01 | `page.tsx`, `components/briefing/**` | RF01, RF09 | 13h10 | a fazer |
-| T05 | Etapa 2 `Versoes`: 2 cards editáveis, cadastro manual | Julia | T04 | `components/versoes/**` | RF02 | 13h30 | a fazer |
-| T06 | `POST /api/versoes` com Responses API + fallback 15 s; botão "Gerar com IA" com carregamento | Julia | T01 | `app/api/versoes/**`, `components/versoes/**` | RF02, RF08 | 13h45 | a fazer |
-| T07 | Etapa 3 `Resultados`: tabela 2 linhas, "Carregar exemplo", colar CSV via `parseCsv` com erro legível | Julia | T02 | `components/resultados/**` | RF03 | 13h45 | a fazer |
+| T04 | `page.tsx` com estado (§1.2) e Etapa 1 `BriefingForm` + "Usar exemplo" | Julia | T01 | `page.tsx`, `components/briefing/**` | RF01, RF09 | 13h10 | pronto: feito pelo Claudio (Julia fora do ar) |
+| T05 | Etapa 2 `Versoes`: 2 cards editáveis, cadastro manual | Julia | T04 | `components/versoes/**` | RF02 | 13h30 | pronto: feito pelo Claudio (Julia fora do ar) |
+| T06 | `POST /api/versoes` com Responses API + fallback 15 s; botão "Gerar com IA" com carregamento | Julia | T01 | `app/api/versoes/**`, `components/versoes/**` | RF02, RF08 | 13h45 | pronto: feito pelo Claudio (Julia fora do ar) |
+| T07 | Etapa 3 `Resultados`: tabela 2 linhas, "Carregar exemplo", colar CSV via `parseCsv` com erro legível | Julia | T02 | `components/resultados/**` | RF03 | 13h45 | pronto: feito pelo Claudio (Julia fora do ar) |
 | T08 | `Placar` + `SeletorObjetivo` + `Selo` (valores, fórmula, z, vencedor com texto) + `format.ts` | Brenno | T02 | `components/placar/**`, `components/comum/format.ts` | RF04, RF05, RF06 | 13h40 | pronto |
 | T09 | `Limitacoes` (card de alerta) | Brenno | T02 | `components/veredito/Limitacoes.tsx` | RF07 | 13h45 | pronto |
 | T10 | `POST /api/veredito` + `Veredito` com fallback e "o juiz está analisando…" | Brenno | T01 | `app/api/veredito/**`, `components/veredito/**` | RF11, RF08 | 14h05 | pronto |
@@ -142,3 +142,4 @@ Cortar nesta ordem, sem perguntar de novo, quando o marco anterior atrasar mais 
 | 13h05 | Claudio conferiu `metrics.ts` (T02) contra REQUISITOS §5: valores, z, selos e limitações corretos. Aguarda o teste formal do Andrey (T03). |
 | 13h05 | Sessões Codex de Julia, Andrey e Felipe caíram (token expirado). Brenno liberado para T13/T14 antes do M1 para não ficar parado; T12 continua depois do M1. |
 | 13h05 | `maestri` não roda dentro dos agentes Codex: retorno por `maestri check` do Claudio. |
+| 13h40 | Agentes Codex (Julia, Andrey, Felipe) sem conseguir executar comandos (Windows erro 1909/1326 no sandbox). Claudio assumiu T04–T07 para garantir o M1; Julia fica com T11 quando voltar. |
