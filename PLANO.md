@@ -87,7 +87,7 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 |---|---|---|---|---|---|---|---|
 | T00 | Setup: Next.js+TS+Tailwind+vitest, `.env.example`, `.gitignore` com `.env*.local`, repo GitHub, deploy "hello" | Claudio | — | config | RNF01, RNF05, RF10 | 12h45 | pronto: T00 (https://duelo-de-campanhas.vercel.app) |
 | T01 | `types.ts` (§5.1) e `exemplo.ts` (briefing, versões, resultados, CSV, veredito por objetivo) | Claudio | T00 | `src/lib/types.ts`, `src/data/exemplo.ts` | contratos | 12h45 | pronto: T01 |
-| T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | a fazer |
+| T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | pronto |
 | T03 | `metrics.test.ts` com a tabela §5 do REQUISITOS + zero contatos + investimentos diferentes + CSV inválido | Andrey | T01 (escreve já), roda após T02 | `src/lib/metrics.test.ts` | RF04, RF06, RF07 | 13h20 | a fazer |
 | T04 | `page.tsx` com estado (§1.2) e Etapa 1 `BriefingForm` + "Usar exemplo" | Julia | T01 | `page.tsx`, `components/briefing/**` | RF01, RF09 | 13h10 | a fazer |
 | T05 | Etapa 2 `Versoes`: 2 cards editáveis, cadastro manual | Julia | T04 | `components/versoes/**` | RF02 | 13h30 | a fazer |
