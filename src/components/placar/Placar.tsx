@@ -14,6 +14,8 @@ export function Placar({ comparacoes, objetivo, onObjetivo }: { comparacoes: Com
       <div className="space-y-3">
         {comparacoes.map((comp) => {
           const selecionado = comp.indicador === objetivo;
+          const vencedoraA = selecionado && comp.vencedor === "A";
+          const vencedoraB = selecionado && comp.vencedor === "B";
           return (
             <article key={comp.indicador} className={`rounded-2xl border p-4 sm:p-5 ${selecionado ? "border-cyan-300/60 bg-slate-800 shadow-lg shadow-cyan-950/30" : "border-slate-700 bg-slate-950/50"}`}>
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -21,14 +23,22 @@ export function Placar({ comparacoes, objetivo, onObjetivo }: { comparacoes: Com
                 <Selo selo={comp.selo} />
               </div>
               <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-center">
-                <div className="rounded-xl bg-cyan-950/50 p-3"><p className="text-xs font-bold text-cyan-300">VERSÃO A</p><p className="mt-1 text-xl font-bold text-white">{formatIndicador(comp.valorA, comp.indicador)}</p></div>
+                <div className={`duelo-score duelo-score--a rounded-xl p-3 ${vencedoraA ? "duelo-score--winner-a" : ""}`}>
+                  <p className="text-xs font-bold text-duelo-a">VERSÃO A</p>
+                  <p className="duelo-score__number mt-1 text-xl text-white">{formatIndicador(comp.valorA, comp.indicador)}</p>
+                  {vencedoraA && <span className="duelo-score__winner-label"><span aria-hidden="true">👑 </span>Vencedora do objetivo</span>}
+                </div>
                 <span aria-hidden="true" className="text-xs font-black text-slate-500">VS</span>
-                <div className="rounded-xl bg-orange-950/40 p-3"><p className="text-xs font-bold text-orange-300">VERSÃO B</p><p className="mt-1 text-xl font-bold text-white">{formatIndicador(comp.valorB, comp.indicador)}</p></div>
+                <div className={`duelo-score duelo-score--b rounded-xl p-3 ${vencedoraB ? "duelo-score--winner-b" : ""}`}>
+                  <p className="text-xs font-bold text-duelo-b">VERSÃO B</p>
+                  <p className="duelo-score__number mt-1 text-xl text-white">{formatIndicador(comp.valorB, comp.indicador)}</p>
+                  {vencedoraB && <span className="duelo-score__winner-label"><span aria-hidden="true">👑 </span>Vencedora do objetivo</span>}
+                </div>
               </div>
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
                 <span>Fórmula: <code>{comp.formula}</code></span><span>z = {formatZ(comp.z)}</span>
               </div>
-              <p className="mt-3 text-sm font-semibold text-slate-200">{comp.vencedor ? `Vencedor: versão ${comp.vencedor}` : "Sem vencedor: valores iguais ou indisponíveis"}</p>
+              <p className="mt-3 text-sm font-semibold text-slate-200">{comp.vencedor ? `Vencedor${selecionado ? " do objetivo" : ""}: versão ${comp.vencedor}` : "Sem vencedor: valores iguais ou indisponíveis"}</p>
             </article>
           );
         })}
