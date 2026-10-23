@@ -85,8 +85,8 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 
 | ID | Tarefa | Dono | Depende | Arquivos | Aceite (RF) | Prazo | Status |
 |---|---|---|---|---|---|---|---|
-| T00 | Setup: Next.js+TS+Tailwind+vitest, `.env.example`, `.gitignore` com `.env*.local`, repo GitHub, deploy "hello" | Claudio | — | config | RNF01, RNF05, RF10 | 12h45 | a fazer |
-| T01 | `types.ts` (§5.1) e `exemplo.ts` (briefing, versões, resultados, CSV, veredito por objetivo) | Claudio | T00 | `src/lib/types.ts`, `src/data/exemplo.ts` | contratos | 12h45 | a fazer |
+| T00 | Setup: Next.js+TS+Tailwind+vitest, `.env.example`, `.gitignore` com `.env*.local`, repo GitHub, deploy "hello" | Claudio | — | config | RNF01, RNF05, RF10 | 12h45 | pronto: T00 (https://duelo-de-campanhas.vercel.app) |
+| T01 | `types.ts` (§5.1) e `exemplo.ts` (briefing, versões, resultados, CSV, veredito por objetivo) | Claudio | T00 | `src/lib/types.ts`, `src/data/exemplo.ts` | contratos | 12h45 | pronto: T01 |
 | T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | a fazer |
 | T03 | `metrics.test.ts` com a tabela §5 do REQUISITOS + zero contatos + investimentos diferentes + CSV inválido | Andrey | T01 (escreve já), roda após T02 | `src/lib/metrics.test.ts` | RF04, RF06, RF07 | 13h20 | a fazer |
 | T04 | `page.tsx` com estado (§1.2) e Etapa 1 `BriefingForm` + "Usar exemplo" | Julia | T01 | `page.tsx`, `components/briefing/**` | RF01, RF09 | 13h10 | a fazer |
@@ -138,3 +138,4 @@ Cortar nesta ordem, sem perguntar de novo, quando o marco anterior atrasar mais 
 | 12h20 | Cronograma replanejado (M1 13h00 → 14h10, congelamento 14h30 → 14h45). |
 | 12h20 | `Comparacao.z` em valor absoluto; "Poucos contatos ({n})" usa o menor número de contatos. |
 | 12h40 | Next.js 15.5 + Tailwind v4 + vitest 5 + openai 7. Sem `tailwind.config.ts` (tema em `globals.css`). |
+| 12h55 | Repo: https://github.com/jubittencourt/Openai-Hackathon (branch `main`). Produção: https://duelo-de-campanhas.vercel.app |
