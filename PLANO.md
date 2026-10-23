@@ -87,7 +87,7 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 |---|---|---|---|---|---|---|---|
 | T00 | Setup: Next.js+TS+Tailwind+vitest, `.env.example`, `.gitignore` com `.env*.local`, repo GitHub, deploy "hello" | Claudio | — | config | RNF01, RNF05, RF10 | 12h45 | pronto: T00 (https://duelo-de-campanhas.vercel.app) |
 | T01 | `types.ts` (§5.1) e `exemplo.ts` (briefing, versões, resultados, CSV, veredito por objetivo) | Claudio | T00 | `src/lib/types.ts`, `src/data/exemplo.ts` | contratos | 12h45 | pronto: T01 |
-| T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | bug |
+| T02 | `metrics.ts`: `comparar`, `limitacoes`, `parseCsv` | Brenno | T01 | `src/lib/metrics.ts` | RF04, RF06, RF07 | 13h10 | aprovado |
 | T03 | `metrics.test.ts` com a tabela §5 do REQUISITOS + zero contatos + investimentos diferentes + CSV inválido | Andrey | T01 (escreve já), roda após T02 | `src/lib/metrics.test.ts` | RF04, RF06, RF07 | 13h20 | aprovado |
 | T04 | `page.tsx` com estado (§1.2) e Etapa 1 `BriefingForm` + "Usar exemplo" | Julia | T01 | `page.tsx`, `components/briefing/**` | RF01, RF09 | 13h10 | pronto: feito pelo Claudio (Julia fora do ar) |
 | T05 | Etapa 2 `Versoes`: 2 cards editáveis, cadastro manual | Julia | T04 | `components/versoes/**` | RF02 | 13h30 | pronto: feito pelo Claudio (Julia fora do ar) |
@@ -96,7 +96,7 @@ Para o `Exportar` ter o veredito, `Veredito` aceita `onVeredito?: (v: Veredito) 
 | T08 | `Placar` + `SeletorObjetivo` + `Selo` (valores, fórmula, z, vencedor com texto) + `format.ts` | Brenno | T02 | `components/placar/**`, `components/comum/format.ts` | RF04, RF05, RF06 | 13h40 | pronto |
 | T09 | `Limitacoes` (card de alerta) | Brenno | T02 | `components/veredito/Limitacoes.tsx` | RF07 | 13h45 | pronto |
 | T10 | `POST /api/veredito` + `Veredito` com fallback e "o juiz está analisando…" | Brenno | T01 | `app/api/veredito/**`, `components/veredito/**` | RF11, RF08 | 14h05 | pronto |
-| **M1** | **Mínimo aceitável ponta a ponta no link público, aprovado pelo QA** | todos | T00–T09 | — | RF01–RF10 | **14h10** | a fazer |
+| **M1** | **Mínimo aceitável ponta a ponta no link público, aprovado pelo QA** | todos | T00–T09 | — | RF01–RF10 | **14h10** | aprovado |
 | T11 | Hero + mockup de post Instagram + "VS" + balão da hipótese | Julia | M1 | `components/briefing/Hero.tsx`, `components/versoes/**` | RF12, RF17 | 14h40 | pronto: T11 |
 | T12 | Visual global: tema escuro, cores A/B, coroa no vencedor, responsivo 375 px, foco visível | Brenno | M1 | `globals.css` (tema via `@theme`), `components/comum/**` | RF15, RNF02, RNF03 | 14h40 | pronto |
 | T13 | `Exportar` (.md) | Brenno | M1 | `components/veredito/Exportar.tsx` | RF13 | 14h40 | pronto |

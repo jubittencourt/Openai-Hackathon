@@ -1,9 +1,9 @@
 ﻿# QA — Duelo de Campanhas
 
-> Dono: **Andrey**. Rodada de 23/10/2026, 14:14–14:20 (America/Sao_Paulo).
+> Dono: **Andrey**. Rodadas de 23/10/2026; atualização às 14:29 (America/Sao_Paulo).
 > Gravidade: **BLOQUEIA** = mínimo aceitável/demo ou aprovação impedidos; **NÃO BLOQUEIA** = verificação aprovada ou observação.
 
-## Rodadas
+## Rodada inicial — 14:14–14:20 (histórico)
 
 | Hora | Tarefa | RF | Resultado | Gravidade | Passos para reproduzir / evidência |
 |---|---|---|---|---|---|
@@ -22,9 +22,27 @@
 | 14:18 | T14 | RF14/16 | revisão de código aprovada; tela pendente | NÃO BLOQUEIA | Rodapé inclui fórmulas, z=1,96, regra de investimentos iguais, explicação de IA/contas e fonte. Avisos Fonte: exemplo existem em Versoes e Veredito. |
 | 14:18 | T15 / M1 | RF10, RF01–17 | impedido: ENV-02 | BLOQUEIA | Alvo https://duelo-de-campanhas.vercel.app. Ferramenta web não acessou URL (não prova indisponibilidade pública). Playwright ausente; instalação temporária falhou EACCES em registry.npmjs.org. Edge headless terminou com 'GPU process is not usable. Goodbye.' (log original: GPU process isn't usable. Goodbye.). node_repl não iniciou sandbox. Não foi possível interagir com produção nem testar 375 px. |
 
-## Roteiro §7 — produção, passos 1–12
+## Reteste e aceite M1 — 14:29
 
-Todos ficaram **pendentes por ENV-02**. Leitura de código e testes unitários não substituem aceite de tela. Não foi confirmado em produção o aviso Fonte: exemplo nas versões nem no veredito.
+**T02 e M1 (RF01–RF10): aprovados.** Base: reteste executado por Andrey, revisão de código registrada acima, build e aceite de tela executados pelo Claudio-maestro e relatados nesta sessão. O teste de tela abaixo não foi executado por Andrey. Produção informada pelo Claudio: https://duelo-de-campanhas.vercel.app, nova publicação após a correção `dec1e9a`.
+
+| Hora | Tarefa | RF | Resultado | Gravidade | Passos para reproduzir / evidência e executor |
+|---|---|---|---|---|---|
+| 14:29 | T02/T03 | RF03/04/06/07 | aprovado; BUG-01 encerrado | NÃO BLOQUEIA | Andrey executou `npm.cmd test` em HEAD dec1e9a: 1 arquivo aprovado, 18/18 testes passaram, saída 0, duração 447 ms, início 14:29:01. Inclui zero contatos em A/B/ambas, selo Não testável, z=null e limitação. Diff da correção conferido: valores indisponíveis tornam indicador não calculável e zFinal=null. |
+| 14:29 | T00 / build | RNF01 | aprovado por evidência do Claudio; ENV-01 encerrado | NÃO BLOQUEIA | Claudio informou build limpo aprovado após remover .next e executar npm run build. Identificou builds concorrentes na mesma .next como causa do ENV-01. Build passa a ser exclusivo do Claudio. Andrey não executou build nesta rodada. |
+| 14:29 | T04/T05/T06 | RF01/02/08/09/16 | aprovado no fluxo M1 | NÃO BLOQUEIA | Claudio, portal Maestri em produção a 375 px: Usar exemplo OK; Gerar com IA preenche duas versões com Fonte: exemplo, sem OPENAI_API_KEY. Revisão anterior confirma campos de briefing, canal fixo e edição manual. Não foi relatado novo teste de apagar/recriar uma versão nem de loading. |
+| 14:29 | T07 | RF03 | aprovado no fluxo M1 | NÃO BLOQUEIA | Claudio: Carregar exemplo preenche resultados e abre placar; CSV abc produz erro legível 'CSV inválido: ...'. Parser válido/inválido também confirmado pelos testes de Andrey. Importação do CSV válido pela UI não foi explicitamente relatada nesta rodada. |
+| 14:29 | T08 | RF04/05/06 | aprovado no fluxo M1 | NÃO BLOQUEIA | Claudio: placar com z 4,53/2,86/1,44 e selos; selecionar Eficiência mostra custo por contato, coroa 'Vencedora do objetivo: versão B' e Empate técnico. Valores/vencedores/fórmulas confirmados pela suíte e revisão anterior. |
+| 14:29 | T09/T02 | RF04/06/07 | aprovado no fluxo M1 | NÃO BLOQUEIA | Claudio: quatro limitações do exemplo; contatos A=0 sem NaN/Infinity, um selo Não testável e limitação de divisão por zero; investimento B=700 gera limitação de investimentos diferentes. Suíte confirma também Não testável para investimentos diferentes. |
+| 14:29 | T10 | RF08/11/16 | aprovado no cenário relatado | NÃO BLOQUEIA | Claudio: veredito de custo contém 'ainda não dá para concluir' e Fonte: exemplo. Fallback sem chave confirmado em produção; timeout de IA não exercitado nesta rodada. |
+| 14:29 | T00/T12 / M1 | RF10, RNF02 | aprovado no fluxo móvel relatado | NÃO BLOQUEIA | Claudio acessou produção pelo portal a 375 px e relatou ausência de scroll horizontal em 360/375 px. ENV-02 contornado para o aceite por execução do Claudio; não houve reteste do navegador de Andrey. Aba anônima não foi explicitamente relatada. |
+| 14:29 | T13 | RF13 | presença aprovada; download pendente | NÃO BLOQUEIA | Claudio confirmou botão Exportar presente. Isso não confirma download nem conteúdo do arquivo; T13 e aceite completo T15 permanecem pendentes nesses pontos. RF13 é desejável e não bloqueia M1. |
+| 14:29 | Passo 15 | RNF05 | aprovado no escopo da busca | NÃO BLOQUEIA | Andrey executou equivalente PowerShell de git log -p com busca case-insensitive por sk-, ampliada a --all. Cinco ocorrências: quatro menções ao comando de checagem em QA.md/DESAFIO-17.md/REQUISITOS.md e uma URL de queue-microtask em package-lock.json. Todas inspecionadas; nenhuma é chave. Busca complementar pelo prefixo seguido de ao menos 16 caracteres alfanuméricos/underscore/hífen sem ocorrências. O resultado literal não é vazio; são falsos positivos, não evidência de segredo. |
+| 14:29 | M1 | RF01–RF10 | aprovado | NÃO BLOQUEIA | Aceite combinado: geração de duas versões a partir do briefing, resultados fictícios, comparação por objetivo, selos e limitações em produção pelo Claudio; contratos/escopo conferidos por leitura; métricas/parser por 18 testes de Andrey. BUG-01 corrigido, build aprovado pelo Claudio. Nenhum bloqueio M identificado neste escopo. Aprovação de M1 não equivale à conclusão integral dos 15 passos de T15. |
+
+## Roteiro §7 — situação da rodada inicial (histórico)
+
+Na rodada inicial, todos ficaram **pendentes por ENV-02**. A rodada das 14:29 acima atualiza os cenários efetivamente relatados pelo Claudio; preserva-se abaixo o histórico, sem atribuir execução de tela a Andrey.
 
 | Passo | Tarefa / verificação | Resultado em produção | Evidência complementar local |
 |---|---|---|---|
@@ -43,16 +61,16 @@ Todos ficaram **pendentes por ENV-02**. Leitura de código e testes unitários n
 
 ## Checagens fixas
 
-- [x] T03: suíte criada e executada (18 testes; 16 passaram, 2 falharam)
-- [ ] npm test verde — BUG-01
-- [ ] npm run build sem erro — ENV-01
-- [ ] Fluxo sem OPENAI_API_KEY confirmado no navegador — ENV-02
-- [ ] Roteiro de aceite em produção/aba anônima — ENV-02
-- [ ] Roteiro a 375 px — ENV-02
-- [ ] Histórico Git sem segredos — passo 15 não executado nesta rodada
+- [x] T03: suíte criada e executada; reteste 18/18 verde por Andrey
+- [x] npm test verde — BUG-01 encerrado após dec1e9a
+- [x] npm run build sem erro — execução e resultado informados pelo Claudio; ENV-01 encerrado
+- [x] Fluxo sem OPENAI_API_KEY confirmado em produção pelo Claudio, com Fonte: exemplo nas duas respostas
+- [x] Fluxo M1 a 375 px pelo Claudio; sem scroll horizontal relatado em 360/375 px
+- [x] Passo 15: busca no histórico executada por Andrey; cinco falsos positivos, nenhuma chave identificada
+- [ ] Roteiro integral T15, incluindo aba anônima, edição/cadastro manual, importação de CSV válido pela UI, download real e rodapé; esses itens não foram explicitamente confirmados no relato desta rodada
 
 ## Encaminhamento
 
-T02/M1 não aprovados. Builder deve corrigir BUG-01; repetir testes e obter build verde. Reexecutar passos 1–12 em navegador funcional e viewport de 375 px. T04–T10/T13/T14 continuam pronto até aceite de tela; revisão estática registrada acima. T01 e T03 aprovados no escopo documentado. Fallback após edição usa texto estático de exemplo conforme contrato; não é análise dos novos dados.
+T02 e M1 aprovados, com Status atualizado no PLANO.md. BUG-01 encerrado pelo reteste; ENV-01 encerrado pelo build do Claudio; ENV-02 contornado para M1 pelo aceite de tela executado pelo Claudio. A aprovação usa as fontes de evidência explicitadas nesta rodada. O aceite completo T15 e o download real de T13 continuam pendentes; não foram inferidos a partir da presença do botão. Demais Status preservados. Somente Claudio executa builds a partir desta rodada. Fallback após edição usa texto estático de exemplo conforme contrato; não é análise dos novos dados.
 
 Nenhum código de builder foi alterado. Sem push/deploy.
